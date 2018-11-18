@@ -1,0 +1,24 @@
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>stores</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding class="container">
+  <label for="search"><b>Que lojas pertende visitar?</b></label>
+  <ion-searchbar (ionInput)="getItems($event)"></ion-searchbar>
+  <div id="overlay">
+    <ul id="stores">
+      <li>
+        <div id="item">
+        <p>Primomarco</p>
+        <ion-checkbox></ion-checkbox>
+        </div>
+        <hr>
+      </li>
+    </ul>
+  </div>
+</ion-content>

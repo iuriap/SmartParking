@@ -8,12 +8,14 @@ import { Geolocation } from '@ionic-native/geolocation';
 import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
 import { LocationPage } from '../pages/location/location';
+import { StoresPage } from '../pages/stores/stores';
 
 @NgModule({
   declarations: [
     MyApp,
     HomePage,
-    LocationPage
+    LocationPage,
+    StoresPage
   ],
   imports: [
     BrowserModule,
@@ -23,7 +25,8 @@ import { LocationPage } from '../pages/location/location';
   entryComponents: [
     MyApp,
     HomePage,
-    LocationPage
+    LocationPage,
+    StoresPage
   ],
   providers: [
     StatusBar,

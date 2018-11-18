@@ -23,19 +23,10 @@ page-home {
     }
     
     .container {
+        position: fixed;
         text-align: center;
         padding: 16px;
-    }
-    
-    #continue{
-        position: fixed;
-        bottom: 0;
-        left: 40%;
-        margin-bottom: 10px;
-        padding: 5%;
-        border-radius: 10%;
-    }
-    
+    }    
     
     
 }

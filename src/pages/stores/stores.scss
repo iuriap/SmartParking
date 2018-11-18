@@ -1,0 +1,44 @@
+page-stores {
+    .container{
+        text-align: center;
+    }
+
+    #overlay{
+        margin-top: 8%;
+        height: 100%;
+        width: 100%;
+        background-color: rgba(255, 255, 255, 0.5);
+        
+    }
+
+    #item{
+        display: flex;
+        align-content: space-between;
+        align-items: baseline; 
+    }
+
+    #item > ion-checkbox{
+        transform: scale(2);
+        width: auto;
+        display: block;
+        margin-left: auto;
+        right: 10%;
+    }
+
+    #item > p{
+        font-weight: bold;
+        color: white;
+        font-size: 2em;
+    }
+
+    label{
+        color: black;
+        font-size: 1.5em;
+    }
+    
+
+    hr{
+        border: 1px solid white;
+        transform:translateX(-5%);
+    }
+}
