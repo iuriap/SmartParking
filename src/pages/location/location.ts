@@ -32,11 +32,11 @@ export class LocationPage {
     this.map = leaflet.map("map").fitWorld();
     leaflet.tileLayer('http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
       attributions: 'SmartParking',
-      maxZoom: 50
-    }).addTo(this.map);
+      maxZoom: 40
+        }).addTo(this.map);
     this.map.locate({
       setView: true,
-      maxZoom: 50
+      maxZoom: 40
     }).on('locationfound', (e) => {
      // var markerGroup = leaflet.featureGroup();
      var dragCircle;

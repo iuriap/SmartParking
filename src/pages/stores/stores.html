@@ -12,7 +12,7 @@
   <ion-searchbar (ionInput)="getStores($event)" placeholder="Pocure as suas lojas"></ion-searchbar>
   <ion-list>
     
-    <button (click)="addStore(stores)" *ngFor="let stores of currentStores">
+    <button class="btnInvisi" (click)="addStore(stores)" *ngFor="let stores of currentStores">
       
       <h5>{{stores.name}}</h5>
 
@@ -23,14 +23,15 @@
     <ul id="stores">
       <li>  
         <div id="item">
-            <button id="removeIcon" (click)="removeStore()">
+            <button class="btnInvisi" id="removeIcon" (click)="removeStore()">
             <ion-icon name="md-remove-circle" style="color:red; font-size:2em"></ion-icon>
           </button>
         <p>Primomarco</p>
-        <ion-checkbox (ionChange)="removeButton()"></ion-checkbox>
+        <ion-checkbox (ionChange)="alterButton()"></ion-checkbox>
         </div>
         <hr>
       </li>
     </ul>
   </div>
+  <button id="continue" type="submit" (click)="onLoadResults()">Validar</button>
 </ion-content>

@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, Keyboard } from 'ionic-angular';
 import { StoresProvider } from '../../providers/stores/stores';
-import { Store } from '../../models/store';
+import { ResultsPage } from '../results/results';
 
 /**
  * Generated class for the StoresPage page.
@@ -42,10 +42,18 @@ export class StoresPage {
     document.getElementById("stores").innerHTML+=row;
   }
 
-  removeButton(){
-    document.getElementById("my-removeIcon").remove();
+  alterButton(){
+    var removeBtn = document.getElementById("removeIcon");
+    if (removeBtn != null) {
+      removeBtn.remove();
+    } else {
+      document.getElementById("item").innerHTML += "<button id='removecon' (click)='removeStore()'><ion-icon name='md-remove-circle' style='color:red; font-size:2em'></ion-icon></button>"
+    }
+    
   }
-
+  onLoadResults(){
+    this.navCtrl.push(ResultsPage);
+  }
 }
 
 

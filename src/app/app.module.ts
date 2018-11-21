@@ -6,17 +6,21 @@ import { StatusBar } from '@ionic-native/status-bar';
 import { Geolocation } from '@ionic-native/geolocation';
 
 import { MyApp } from './app.component';
-import { HomePage } from '../pages/home/home';
 import { LocationPage } from '../pages/location/location';
 import { StoresPage } from '../pages/stores/stores';
 import { StoresProvider } from '../providers/stores/stores';
+import { ResultsPage } from '../pages/results/results';
+import { VerificationPage } from '../pages/verification/verification';
+import { HomePage } from '../pages/home/home';
 
 @NgModule({
   declarations: [
     MyApp,
     HomePage,
     LocationPage,
-    StoresPage
+    StoresPage,
+    ResultsPage,
+    VerificationPage
   ],
   imports: [
     BrowserModule,
@@ -27,7 +31,9 @@ import { StoresProvider } from '../providers/stores/stores';
     MyApp,
     HomePage,
     LocationPage,
-    StoresPage
+    StoresPage,
+    ResultsPage,
+    VerificationPage
   ],
   providers: [
     StatusBar,
