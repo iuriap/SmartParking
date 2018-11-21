@@ -9,13 +9,25 @@
 
 <ion-content padding class="container">
   <label for="search"><b>Que lojas pertende visitar?</b></label>
-  <ion-searchbar (ionInput)="getItems($event)"></ion-searchbar>
+  <ion-searchbar (ionInput)="getStores($event)" placeholder="Pocure as suas lojas"></ion-searchbar>
+  <ion-list>
+    
+    <button (click)="addStore(stores)" *ngFor="let stores of currentStores">
+      
+      <h5>{{stores.name}}</h5>
+
+    </button>
+   
+  </ion-list>
   <div id="overlay">
     <ul id="stores">
-      <li>
+      <li>  
         <div id="item">
+            <button id="removeIcon" (click)="removeStore()">
+            <ion-icon name="md-remove-circle" style="color:red; font-size:2em"></ion-icon>
+          </button>
         <p>Primomarco</p>
-        <ion-checkbox></ion-checkbox>
+        <ion-checkbox (ionChange)="removeButton()"></ion-checkbox>
         </div>
         <hr>
       </li>

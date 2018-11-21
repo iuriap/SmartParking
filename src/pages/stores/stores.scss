@@ -26,9 +26,8 @@ page-stores {
     }
 
     #item > p{
-        font-weight: bold;
         color: white;
-        font-size: 2em;
+        font-size: 1.5em;
     }
 
     label{
@@ -41,4 +40,18 @@ page-stores {
         border: 1px solid white;
         transform:translateX(-5%);
     }
+
+    ion-list{
+        position: fixed;
+        text-align: left;
+        background-color: rgba(255, 255, 255, 0.5);
+        z-index: 1;
+        width: 90%;
+    }
+
+    button{
+        background-color: transparent;
+        display: block;
+    }
+    
 }

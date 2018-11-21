@@ -9,6 +9,7 @@ import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
 import { LocationPage } from '../pages/location/location';
 import { StoresPage } from '../pages/stores/stores';
+import { StoresProvider } from '../providers/stores/stores';
 
 @NgModule({
   declarations: [
@@ -32,7 +33,8 @@ import { StoresPage } from '../pages/stores/stores';
     StatusBar,
     SplashScreen,
     Geolocation,
-    {provide: ErrorHandler, useClass: IonicErrorHandler}
+    {provide: ErrorHandler, useClass: IonicErrorHandler},
+    StoresProvider
   ]
 })
 export class AppModule {}
