@@ -24,6 +24,7 @@ export class LocationPage {
   }
   
   onLoadStores(){
+    /* enviar JSON para API*/
     this.navCtrl.push(StoresPage);
   }
   
@@ -38,23 +39,18 @@ export class LocationPage {
       setView: true,
       maxZoom: 12
     }).on('locationfound', (e) => {
-     // var markerGroup = leaflet.featureGroup();
      let dragCircle;
      var radius = 7000;
      
       var marker: any = leaflet.marker([e.latitude, e.longitude], {draggable:'true'}).on('dragend', () => {
-      //alert(marker.getLatLng());
       this.map.removeLayer(dragCircle);
       dragCircle = leaflet.circle(marker.getLatLng(), radius,{color:'lightgreen',opacity:1,fillColor: 'blue',fillOpacity:.4}).addTo(this.map);
-      
-      //leaflet.circle(marker.getLatLng(), 7000,{color:'lightgreen',opacity:1,fillColor: 'blue',fillOpacity:.4}).addTo(this.map);
-      })
+    })
       dragCircle = leaflet.circle(marker.getLatLng(), radius,{color:'lightgreen',opacity:1,fillColor: 'blue',fillOpacity:.4}).addTo(this.map);
-      
-      //markerGroup.addLayer(marker);
+    
       this.map.addLayer(marker);
       this.map.addLayer(dragCircle);
-      //alert(JSON.stringify(dragCircle.toGeoJSON()));
+      
       alert(JSON.stringify(dragCircle.toGeoJSON().geometry) + " raio para calcular: (" + JSON.stringify(radius) +") KMs");
       
     }).on('locationerror', (err) => {
@@ -65,20 +61,5 @@ export class LocationPage {
 ;
 
   }
-
-  
-  
-  /*
-  onMapClick(e) {
-    this.map.marker = new leaflet.marker(e.latlng, {draggable:'true'});
-    this.map.marker.on('dragend', function(event){
-      var marker = event.target;
-      var position = marker.getLatLng();
-      marker.setLatLng(new leaflet.LatLng(position.lat, position.lng),{draggable:'true'});
-      this.map.panTo(new leaflet.LatLng(position.lat, position.lng))
-    });
-    this.map.addLayer(this.map.marker);
-  };
-  */
  
 }
