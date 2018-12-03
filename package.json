@@ -28,6 +28,7 @@
     "@ionic/pro": "2.0.3",
     "@ionic/storage": "2.2.0",
     "angular": "^1.7.5",
+    "bpmn-js": "^3.0.2",
     "cordova-android": "7.1.2",
     "cordova-plugin-device": "^2.0.2",
     "cordova-plugin-geolocation": "4.0.1",
@@ -45,7 +46,7 @@
     "zone.js": "0.8.26"
   },
   "devDependencies": {
-    "@ionic/app-scripts": "3.2.0",
+    "@ionic/app-scripts": "^3.2.1",
     "typescript": "~2.6.2"
   },
   "description": "An Ionic project",
