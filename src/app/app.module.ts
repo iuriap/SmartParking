@@ -12,6 +12,7 @@ import { StoresProvider } from '../providers/stores/stores';
 import { ResultsPage } from '../pages/results/results';
 import { VerificationPage } from '../pages/verification/verification';
 import { HomePage } from '../pages/home/home';
+import { HttpModule } from '@angular/http';
 
 @NgModule({
   declarations: [
@@ -24,7 +25,8 @@ import { HomePage } from '../pages/home/home';
   ],
   imports: [
     BrowserModule,
-    IonicModule.forRoot(MyApp)
+    IonicModule.forRoot(MyApp),
+    HttpModule
   ],
   bootstrap: [IonicApp],
   entryComponents: [

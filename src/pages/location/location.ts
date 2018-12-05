@@ -3,16 +3,19 @@ import { NavController} from 'ionic-angular';
 import leaflet from 'leaflet';
 import { StoresPage } from '../stores/stores';
 
+
 @Component({
   selector: 'page-location',
   templateUrl: 'location.html',
 })
 export class LocationPage {
+
   @ViewChild('map') mapContainer: ElementRef;
   map: any;
+  location;
   constructor(public navCtrl: NavController) {
-    
   }
+
   ionViewDidLoad() {
     console.log('ionViewDidLoad LocationPage');
     
@@ -25,7 +28,7 @@ export class LocationPage {
   
   onLoadStores(){
     /* enviar JSON para API*/
-    this.navCtrl.push(StoresPage);
+    this.navCtrl.push(StoresPage, this.location);
   }
   
   loadmap() {
@@ -52,7 +55,7 @@ export class LocationPage {
       this.map.addLayer(dragCircle);
       
       alert(JSON.stringify(dragCircle.toGeoJSON().geometry) + " raio para calcular: (" + JSON.stringify(radius) +") KMs");
-      
+      this.location = dragCircle.toGeoJSON().geometry;
     }).on('locationerror', (err) => {
         alert(err.message);
     }).on('dragend', function() {

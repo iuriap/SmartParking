@@ -1,7 +1,8 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
-import { StoresProvider } from '../../providers/stores/stores';
+/*import { StoresProvider } from '../../providers/stores/stores';*/
 import { ResultsPage } from '../results/results';
+import {Http} from '@angular/http';
 
 /**
  * Generated class for the StoresPage page.
@@ -17,15 +18,28 @@ import { ResultsPage } from '../results/results';
 })
 export class StoresPage {
   currentStores: any = [];
+  coordinates;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, public stores: StoresProvider) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, public http: Http) {
+  this.coordinates = navParams.get('coordinates');
+  
+  this.http = http;
+
   }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad StoresPage');
+    
   }
 
   getStores(ev) {
+    alert ('localhost:3000/api/app/' + this.coordinates[0]+','+this.coordinates[1]);
+    //let val = ev.target.value;
+    this.http.get('http://localhost:3000/api/app/' + this.coordinates[0]+','+this.coordinates[1]).subscribe(data => {
+      alert(data);
+      });
+      
+    /*
     let val = ev.target.value;
     if (!val || !val.trim()) {
       this.currentStores = [];
@@ -33,7 +47,7 @@ export class StoresPage {
     }
     this.currentStores = this.stores.query({
       name: val
-    });
+    });*/
   }
 
   addStore(Store){
