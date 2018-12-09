@@ -1,8 +1,7 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
-/*import { StoresProvider } from '../../providers/stores/stores';*/
+import { IonicPage, NavController } from 'ionic-angular';
+import { StoresProvider } from '../../providers/stores/stores';
 import { ResultsPage } from '../results/results';
-import {Http} from '@angular/http';
 
 /**
  * Generated class for the StoresPage page.
@@ -20,39 +19,29 @@ export class StoresPage {
   currentStores: any = [];
   coordinates;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, public http: Http) {
-  this.coordinates = navParams.get('coordinates');
-  
-  this.http = http;
-
-  }
+  constructor(public navCtrl: NavController, public stores: StoresProvider) {
+ 
+ }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad StoresPage');
     
   }
 
-  getStores(ev) {
-    alert ('localhost:3000/api/app/' + this.coordinates[0]+','+this.coordinates[1]);
-    //let val = ev.target.value;
-    this.http.get('http://localhost:3000/api/app/' + this.coordinates[0]+','+this.coordinates[1]).subscribe(data => {
-      alert(data);
-      });
-      
-    /*
+  getStores(ev) {  
     let val = ev.target.value;
     if (!val || !val.trim()) {
       this.currentStores = [];
       return;
     }
     this.currentStores = this.stores.query({
-      name: val
-    });*/
+      nome: val
+    });
   }
 
   addStore(Store){
-    var row = "<li><div id=item ><p>"+Store.name+"</p> <ion-checkbox class='checkbox checkbox-md'><div class='checkbox-icon'><div class='checkbox-inner'></div></div><button class='item-cover  item-cover-md item-cover-default item-cover-default-md' ion-button='item-cover' role='checkbox' type='button' id='undefined' aria-checked='false' aria-disabled='false'><span class='button-inner'> </span><div class='button-effect'></div></button></ion-checkbox> </div><hr></li>";
-
+    var row = "<li><div id=item ><p>"+Store.nome+"</p> <ion-checkbox class='checkbox checkbox-md'><div class='checkbox-icon'><div class='checkbox-inner'></div></div><button class='item-cover disable-hover item-cover-md item-cover-default item-cover-default-md' ion-button='item-cover' role='checkbox' type='button' id='undefined' aria-checked='false' aria-disabled='false'><span class='button-inner'> </span><div class='button-effect'></div></button></ion-checkbox> </div><hr></li>";
+    
     document.getElementById("stores").innerHTML+=row;
   }
 

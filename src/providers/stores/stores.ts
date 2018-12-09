@@ -1,6 +1,8 @@
 
 import { Injectable } from '@angular/core';
 import { Store } from '../../models/store';
+import {Http} from '@angular/http';
+
 
 /*
   Generated class for the StoresProvider provider.
@@ -12,43 +14,23 @@ import { Store } from '../../models/store';
 export class StoresProvider {
 
   items: Store[] = [];
+  getStores;
+  coordinates;
 
-  defaultItem: any = {
-    "name": "Paga Mais"
-  };
-
-
-  constructor() {
-    let items = [
-      {
-        "name": "Poupa Menos"
-      },
-      {
-        "name": "Paga 3 leva 2"
-      },
-      {
-        "name": "Continencia"
-      },
-      {
-        "name": "Auchim"
-      },
-      {
-        "name": "Primomark"
-      },
-      {
-        "name": "Pingo Azedo"
-      },
-      {
-        "name": "Já volto"
-      }
-    ];
-
-    for (let item of items) {
-      this.items.push(new Store(item));
-    }
+  setLocation(location){
+    this.coordinates = location.coordinates;
+    this.getStores = this.http.get('http://localhost:3000/api/app/' + this.coordinates[0]+','+this.coordinates[1]);
+    this.getStores.forEach(element => {
+      var body = JSON.parse(element._body);
+      this.getItems(body);
+    });
   }
 
-  query(params?: any) {
+  constructor(public http: Http) {
+  }
+
+  query(params?: any) {    
+
     if (!params) {
       return this.items;
     }
@@ -73,5 +55,15 @@ export class StoresProvider {
   delete(item: Store) {
     this.items.splice(this.items.indexOf(item), 1);
   }
+
+  getItems(json){
+    let items = json;
+
+    for (let item of items) {
+      this.items.push(new Store(item));
+    }
+
+  }
+  
 
 }

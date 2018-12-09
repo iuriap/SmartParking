@@ -9,12 +9,12 @@
 
 <ion-content padding class="container">
   <label for="search"><b>Que lojas pertende visitar?</b></label>
-  <ion-searchbar (ionInput)="getStores($event)" placeholder="Pocure as suas lojas"></ion-searchbar>
+  <ion-searchbar (ionInput)="getStores($event)" placeholder="Procure as suas lojas"></ion-searchbar>
   <ion-list>
     
     <button class="btnInvisi" (click)="addStore(stores)" *ngFor="let stores of currentStores">
       
-      <h5>{{stores.name}}</h5>
+      <h5>{{stores.nome}}</h5>
 
     </button>
    
@@ -23,9 +23,11 @@
     <ul id="stores">
       <li>  
         <div id="item">
+          <!--
             <button class="btnInvisi" id="removeIcon" (click)="removeStore()">
             <ion-icon name="md-remove-circle" style="color:red; font-size:2em"></ion-icon>
           </button>
+        -->
         <p>Primomarco</p>
         <ion-checkbox (ionChange)="alterButton()"></ion-checkbox>
         </div>

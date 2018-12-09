@@ -21,7 +21,7 @@ import { HttpModule } from '@angular/http';
     LocationPage,
     StoresPage,
     ResultsPage,
-    VerificationPage
+    VerificationPage,
   ],
   imports: [
     BrowserModule,
