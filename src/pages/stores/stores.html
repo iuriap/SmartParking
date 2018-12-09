@@ -20,10 +20,12 @@
    
   </ion-list>
   <div id="overlay">
+    <!--
     <ul id="stores">
       <li>  
+        
         <div id="item">
-          <!--
+          
             <button class="btnInvisi" id="removeIcon" (click)="removeStore()">
             <ion-icon name="md-remove-circle" style="color:red; font-size:2em"></ion-icon>
           </button>
@@ -36,7 +38,9 @@
     </ul>
     -->
     <ion-list>
-        <ion-item *ngFor="let stores of selectionStroes">{{stores.name}}</ion-item>
+        <ion-item *ngFor="let stores of selectionStroes">{{stores.name}}
+          <hr>
+        </ion-item>
     </ion-list>
   </div>
   <button id="continue" type="submit" (click)="onLoadResults()">Validar</button>
