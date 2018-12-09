@@ -17,6 +17,7 @@ export class StoresProvider {
   getStores;
   coordinates;
 
+  //faz o pedido à api --> BD para receber as marcas contidas num raio de 70km das coordenadas 
   setLocation(location){
     this.coordinates = location.coordinates;
     this.getStores = this.http.get('http://localhost:3000/api/app/' + this.coordinates[0]+','+this.coordinates[1]);
