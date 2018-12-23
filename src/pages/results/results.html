@@ -15,7 +15,8 @@
 
 <ion-content padding>
 
-
-<p>teste12</p>
+    <ion-list *ngFor="let mall of mallsList">
+        <ion-label>{{mall.nome}}</ion-label>
+    </ion-list>
 
 </ion-content>

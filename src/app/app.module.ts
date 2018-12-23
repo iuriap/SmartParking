@@ -13,6 +13,8 @@ import { ResultsPage } from '../pages/results/results';
 import { VerificationPage } from '../pages/verification/verification';
 import { HomePage } from '../pages/home/home';
 import { HttpModule } from '@angular/http';
+import { MallsProvider } from '../providers/malls/malls';
+import { AreaProvider } from '../providers/area/area';
 
 @NgModule({
   declarations: [
@@ -42,7 +44,9 @@ import { HttpModule } from '@angular/http';
     SplashScreen,
     Geolocation,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
-    StoresProvider
+    StoresProvider,
+    MallsProvider,
+    AreaProvider
   ]
 })
 export class AppModule {}

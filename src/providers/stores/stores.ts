@@ -2,6 +2,7 @@
 import { Injectable } from '@angular/core';
 import { Store } from '../../models/store';
 import {Http} from '@angular/http';
+import { AlertController} from 'ionic-angular';
 
 
 /*
@@ -16,6 +17,7 @@ export class StoresProvider {
   items: Store[] = [];
   getStores;
   coordinates;
+  nItems;
 
   //faz o pedido à api --> BD para receber as marcas contidas num raio de 70km das coordenadas 
   setLocation(location){
@@ -24,13 +26,18 @@ export class StoresProvider {
     this.getStores.forEach(element => {
       var body = JSON.parse(element._body);
       this.getItems(body);
+      this.nItems = this.items.length;
+      alert(this.nItems);
     });
   }
-
-  constructor(public http: Http) {
+  getNItems(){
+     return this.items;
   }
 
-  query(params?: any) {    
+  constructor(public http: Http, private alertCtrl: AlertController) {
+  }
+
+  query(params: any) {    
 
     if (!params) {
       return this.items;
@@ -63,8 +70,28 @@ export class StoresProvider {
     for (let item of items) {
       this.items.push(new Store(item));
     }
-
+    if (items.length <=0) {
+      this.presentAlert();
+    }
+    
   }
-  
+
+
+
+  presentAlert() {
+    let alert = this.alertCtrl.create({
+      title: 'Nenhuma loja',
+      subTitle: 'Não encontramos nenhuma loja na sua localização',
+      buttons: [{
+        text: 'Voltar',
+        role: 'cancel',
+        handler: () => {
+
+          console.log('Cancel clicked');
+        }
+      }]
+    });
+    alert.present();
+  }
 
 }

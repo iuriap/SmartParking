@@ -37,10 +37,20 @@
       </li>
     </ul>
     -->
-    <ion-list>
-        <ion-item *ngFor="let stores of selectionStroes">{{stores.name}}
-          <hr>
-        </ion-item>
+    <ion-list id="stores">
+        <ion-item-sliding *ngFor="let store of selectionStroes" >
+            <ion-item>
+            <ion-label>{{store.nome}}</ion-label>
+            <ion-checkbox name ="chk"></ion-checkbox>
+          </ion-item>
+          <ion-item-options>
+            <!--<ion-checkbox name ="chk" (ionChange)="alterButton()"></ion-checkbox>
+          -->
+            <button ion-button icon-only (click)="deleteStore(store)" danger>
+              <ion-icon name="trash"></ion-icon>
+            </button>
+          </ion-item-options>
+        </ion-item-sliding>
     </ion-list>
   </div>
   <button id="continue" type="submit" (click)="onLoadResults()">Validar</button>

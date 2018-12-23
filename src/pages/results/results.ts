@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { MallsProvider } from '../../providers/malls/malls';
 
 /**
  * Generated class for the ResultsPage page.
@@ -14,11 +15,14 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
   templateUrl: 'results.html',
 })
 export class ResultsPage {
+  
+  mallsList: any = [];
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, public malls: MallsProvider) {
   }
 
   ionViewDidLoad() {
+    this.mallsList = this.malls.setMalls();
     console.log('ionViewDidLoad ResultsPage');
   }
 

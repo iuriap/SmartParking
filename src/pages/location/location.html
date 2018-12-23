@@ -14,6 +14,14 @@
 
 
 <ion-content padding>
-    <div id="map"></div>
+    <ion-range min="1" max="30" debounce="700"  [(ngModel)]="diameter" (ionChange)="getDiam($event)" color="secondary">
+        <ion-label range-left>1 Km</ion-label>
+        <ion-label range-right>30 km</ion-label>
+      </ion-range>
+    
+    <div id="map">
+        
+    </div>
+    
     <button id="continue" type="submit" (click)="onLoadStores()">Validar</button>
 </ion-content>
