@@ -14,6 +14,7 @@ export class LocationPage {
   @ViewChild('map') mapContainer: ElementRef;
   map: any;
   location;
+  rad;
   diameter: number = 15;
   diamWork = (this.diameter /2)*1000;
   globalMark;
@@ -36,7 +37,7 @@ export class LocationPage {
   onLoadStores() {
     //envia a localização ao mudar de pagina. 
     //esta localização vai preencher o Provider stores onde vai processar o pedido à API
-    this.stores.setLocation(this.location);
+    this.stores.setLocation(this.location, this.rad);
     this.navCtrl.push(StoresPage);
   }
 
@@ -81,6 +82,7 @@ export class LocationPage {
       this.map.addLayer(dragCircle);
       
       this.location = dragCircle.toGeoJSON().geometry;
+      this.rad = this.diamWork;
 
     }).on('locationerror', (err) => {
       alert(err.message);

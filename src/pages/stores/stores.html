@@ -20,23 +20,6 @@
    
   </ion-list>
   <div id="overlay">
-    <!--
-    <ul id="stores">
-      <li>  
-        
-        <div id="item">
-          
-            <button class="btnInvisi" id="removeIcon" (click)="removeStore()">
-            <ion-icon name="md-remove-circle" style="color:red; font-size:2em"></ion-icon>
-          </button>
-        
-        <p>Primomarco</p>
-        <ion-checkbox (ionChange)="alterButton()"></ion-checkbox>
-        </div>
-        <hr>
-      </li>
-    </ul>
-    -->
     <ion-list id="stores">
         <ion-item-sliding *ngFor="let store of selectionStroes" >
             <ion-item>
@@ -44,8 +27,6 @@
             <ion-checkbox name ="chk"></ion-checkbox>
           </ion-item>
           <ion-item-options>
-            <!--<ion-checkbox name ="chk" (ionChange)="alterButton()"></ion-checkbox>
-          -->
             <button ion-button icon-only (click)="deleteStore(store)" danger>
               <ion-icon name="trash"></ion-icon>
             </button>

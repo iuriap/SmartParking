@@ -3,6 +3,7 @@ import { IonicPage, NavController } from 'ionic-angular';
 import { StoresProvider } from '../../providers/stores/stores';
 import { ResultsPage } from '../results/results';
 import { Store } from '../../models/store';
+import { MallsProvider } from '../../providers/malls/malls';
 
 /**
  * Generated class for the StoresPage page.
@@ -20,9 +21,10 @@ export class StoresPage {
   currentStores: any = [];
   coordinates;
   selectionStroes: Store = [];
+  storesIds;
 
   // o StoresProvider faz o load uma vez da lista de marcas dentro do raio e está em ../../providers/stores/stores
-  constructor(public navCtrl: NavController, public stores: StoresProvider ) {
+  constructor(public navCtrl: NavController, public stores: StoresProvider, public malls: MallsProvider ) {
  }
 
 
@@ -55,36 +57,31 @@ export class StoresPage {
   }
 
 
-
-  alterButton(){
-    /*
-    var removeBtn = document.getElementById("removeIcon");
-    if (removeBtn != null) {
-      removeBtn.remove();
-    } else {
-      document.getElementById("item").innerHTML += "<button id='removecon' (click)='removeStore()'><ion-icon name='md-remove-circle' style='color:red; font-size:2em'></ion-icon></button>"
-    }
-    */
-  }
-
   getStoresId(){
-    var storesIds = [];
+  
     this.selectionStroes.forEach(element => {
-      storesIds.push(element);
+      this.storesIds.push(element);
     });
-    return storesIds;
+    return this.storesIds;
 
   }
 
   onLoadResults(){
-    var storesIds = [];
+
+    /*
     this.selectionStroes.forEach(element => {
       storesIds.push(element);
     });
     if (this.selectionStroes.length > 0) {
       this.navCtrl.push(ResultsPage);
-    }
-    
+    }  
+  }*/
+  console.log(this.getStoresId());
+
+  if (this.selectionStroes.length > 0) {
+    this.navCtrl.push(ResultsPage);
+  }
+  //this.malls.getSelcStores(storesIds); 
   }
 }
 

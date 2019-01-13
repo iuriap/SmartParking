@@ -22,7 +22,6 @@ export class ResultsPage {
   }
 
   ionViewDidLoad() {
-    this.mallsList = this.malls.setMalls();
     console.log('ionViewDidLoad ResultsPage');
   }
 

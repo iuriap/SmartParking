@@ -20,9 +20,9 @@ export class StoresProvider {
   nItems;
 
   //faz o pedido à api --> BD para receber as marcas contidas num raio de 70km das coordenadas 
-  setLocation(location){
+  setLocation(location, rad){
     this.coordinates = location.coordinates;
-    this.getStores = this.http.get('http://localhost:3000/api/app/' + this.coordinates[0]+','+this.coordinates[1]);
+    this.getStores = this.http.get('http://localhost:3000/api/app/marcas/' + this.coordinates[0]+','+this.coordinates[1] + "/" + rad);
     this.getStores.forEach(element => {
       var body = JSON.parse(element._body);
       this.getItems(body);

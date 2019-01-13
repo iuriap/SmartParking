@@ -11,17 +11,23 @@ import { StoresPage } from '../../pages/stores/stores';
 @Injectable()
 export class MallsProvider {
 stores: StoresPage;
-
+malls;
+selectedStores: any [];
 
 
   constructor(public http: Http) {
-    
   }
 
-  setMalls(){
-   var storesId = this.stores.getStoresId();
-   alert(JSON.stringify(storesId));
-   return storesId;
+  getSelcStores(storesId){
+    storesId.array.forEach(element => {
+      this.selectedStores.push(element);
+      alert(element);
+    });
+    this.malls = this.http.get('http://localhost:3000/api/app/centros/' + this.selectedStores);
+        this.malls.forEach(element => {
+          alert(element);
+        });
+   
   }
 
 }
